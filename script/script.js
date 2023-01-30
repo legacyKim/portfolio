@@ -1,6 +1,41 @@
 
 $(function(){
 
+		// work list repeat
+
+		var work = [
+
+		{ LINK : "https://nft.rootonix.kr/", PROJECT : "Rootonix", DAYS : "4 days", ENTERPRISE : "MEAT-ALL" },
+		{ LINK : "https://lost-ari.com/", PROJECT : "Lost Ari", DAYS : "4 days", ENTERPRISE : "MEAT-ALL" },
+		{ LINK : "https://moorrfamily.com/", PROJECT : "Moorr family", DAYS : "4 days", ENTERPRISE : "MEAT-ALL" },
+		{ LINK : "https://buy.moorrfamily.com/", PROJECT : "Moorr family Minting", DAYS : "2 days", ENTERPRISE : "MEAT-ALL" },
+		{ LINK : "https://dreameta.net/", PROJECT : "Dream Pictures", DAYS : "3 days", ENTERPRISE : "MEAT-ALL" },
+		{ LINK : "https://meta-all.co.kr/", PROJECT : "Meta-all", DAYS : "3 days", ENTERPRISE : "MEAT-ALL" },
+		{ LINK : "https://theilion.io/", PROJECT : "Ilion", DAYS : "4 days", ENTERPRISE : "MEAT-ALL" },
+		{ LINK : "https://rawsoft.io/", PROJECT : "Pamarscan", DAYS : "3 days", ENTERPRISE : "MEAT-ALL" },
+		{ LINK : "https://goldenclub.io/", PROJECT : "Goldenclub", DAYS : "3 days", ENTERPRISE : "MEAT-ALL" },
+		{ LINK : "https://thepierrotclub.io/", PROJECT : "PIERROT CLUB", DAYS : "4 days", ENTERPRISE : "MEAT-ALL" },
+		{ LINK : "http://nicecharger.co.kr/index.jsp", PROJECT : "Nice Charger", DAYS : "6 days", ENTERPRISE : "NINEONE LABS" },
+		{ LINK : "http://sample.nineonelabs.co.kr/paycam/", PROJECT : "PayCam", DAYS : "6 days", ENTERPRISE : "NINEONE LABS" },
+		{ LINK : "http://iipa.kr/index.php", PROJECT : "IIPA", DAYS : "6 days", ENTERPRISE : "NINEONE LABS" },
+		{ LINK : "http://emlab.gachon.ac.kr/", PROJECT : "Gachon Univ Emlab", DAYS : "6 days", ENTERPRISE : "NINEONE LABS" },
+		{ LINK : "http://jbbplatform.jbbank.co.kr/", PROJECT : "JB Platform", DAYS : "6 days", ENTERPRISE : "NINEONE LABS" },
+
+		]
+
+		var worklist = $('.work_list');
+
+		for (var key in work) {
+			worklist.append(`<li>
+				<a href=${work[key].LINK} target="_blank">
+				<span>${work[key].PROJECT}</span>
+				<span>${work[key].DAYS}</span>
+				<strong>${work[key].ENTERPRISE}</strong>
+				<span class="icon-link"></span>
+				</a>
+				</li>`)
+		}
+
 		// section change
 
 		var pageZindex = 1;
@@ -134,5 +169,6 @@ $(function(){
 		$('.beReady').on("click", function(){
 			alert("준비 중 입니다.");
 		});
+
 
 	});
