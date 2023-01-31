@@ -363,7 +363,7 @@ nav {
 	transition: all 0.3s ease-in-out;
 }
 
-.scroll_acitve {
+.scroll_active {
 	transform: translateY(0px) !important;
 	opacity: 1 !important;
 }
@@ -604,18 +604,36 @@ nav {
 	color: #fff;
 }
 
-.intro_box>p>a {
-	position: relative;
-	display: inline-block;
-
-	font-size: inherit;
-	font-weight: inherit;
-	line-height: inherit;
-	color: inherit;
-	text-decoration: underline;
-}
-
 .beReady {
 	cursor: default;
 	color: #666 !important;
+}
+
+/* 23 01 31 */
+
+#change_script {
+	position: absolute;
+	top: 40px;
+	right: 0px;
+	display: none;
+	/*display: flex;*/
+
+	justify-content: center;
+	align-items: center;
+	
+	/*	background: #0064FF;*/
+	background: #666;
+	
+	border-radius: 6px;
+	cursor: default;
+	pointer-events: none;
+}
+
+#change_script>span {
+	font-size: 20px;
+	font-weight: 600;
+	line-height: 1.5;
+	color: #fff;
+
+	padding: 10px 40px;
 }

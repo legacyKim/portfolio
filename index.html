@@ -8,26 +8,27 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
+	<script type="text/javascript" src="./script/common.js"></script>
+	<script type="text/javascript" src="./script/jquery.min.js"></script>
+	<script type="text/javascript" src="./script/script.js" id="scriptTag"></script>
+
 	<link rel="stylesheet" type="text/css" href="./css/normalize.css">
 	<link rel="stylesheet" type="text/css" href="./css/common.css">
 	<link rel="stylesheet" type="text/css" href="./css/fontello/css/fontello.css">
-	<script type="text/javascript" src="./script/jquery.min.js"></script>
-	<script type="text/javascript" src="./script/script.js"></script>
 
 	<title>TaeHoon Portfolio</title>
 
 </head>
 
-<body>
+<body id="scrollHeight">
 
-
-	<wrap>
+	<wrap id="scrollTop">
 
 		<nav>
 			
-			<ul class="sidemenu">
+			<ul class="sidemenu" id="sidemenu">
 				<li>
-					<a href="javascript:void(0)" class="side_menu_btn nav_none">Main</a>
+					<a href="javascript:void(0)" class="side_menu_btn" id="nav_none">Main</a>
 				</li>
 				<li>
 					<a href="javascript:void(0)" class="side_menu_btn">Work</a>
@@ -39,7 +40,7 @@
 					<a href="javascript:void(0)" class="side_menu_btn">Intro</a>
 				</li>
 				<li>
-					<a href="javascript:void(0)" class="beReady">BeReady</a>
+					<a href="javascript:void(0)" class="beReady" style="color: #666">BeReady</a>
 				</li>
 			</ul>
 
@@ -48,6 +49,13 @@
 		<main class="section_common section_active">
 
 			<div class="section_content_area main_center">
+				
+				<a href="javascript:void(0)" id="change_script">
+					<span id="change_script_text">
+						Change JQuery							
+					</span>
+				</a>
+
 				<div class="main_pos">
 					<div class="main_flex">
 						<div class="main_box">
@@ -103,7 +111,7 @@
 				<div class="sec_title">
 					<div class="sec_tit_box">
 						<h4>Work</h4>					
-						<a href="javascript:void(0)" class="resume_btn">Career Description
+						<a href="javascript:void(0)" id="resume_btn">Career Description
 						</a>					
 					</div>
 				</div>
@@ -240,7 +248,7 @@
 						</li>
 					</ul>
 				</div>
-				<div class="resume_list_pos career_description">
+				<div class="resume_list_pos" id="career_description">
 					<div class="resume_list_tit">
 						<h5>Carrer Description</h5>
 					</div>

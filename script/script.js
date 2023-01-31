@@ -1,174 +1,187 @@
+window.addEventListener('DOMContentLoaded', function(){
 
-$(function(){
+	// work list repeat
 
-		// work list repeat
+	var work = [
 
-		var work = [
+	{ LINK : "https://nft.rootonix.kr/", PROJECT : "Rootonix", DAYS : "4 days", ENTERPRISE : "MEAT-ALL" },
+	{ LINK : "https://lost-ari.com/", PROJECT : "Lost Ari", DAYS : "4 days", ENTERPRISE : "MEAT-ALL" },
+	{ LINK : "https://moorrfamily.com/", PROJECT : "Moorr family", DAYS : "4 days", ENTERPRISE : "MEAT-ALL" },
+	{ LINK : "https://buy.moorrfamily.com/", PROJECT : "Moorr family Minting", DAYS : "2 days", ENTERPRISE : "MEAT-ALL" },
+	{ LINK : "https://dreameta.net/", PROJECT : "Dream Pictures", DAYS : "3 days", ENTERPRISE : "MEAT-ALL" },
+	{ LINK : "https://meta-all.co.kr/", PROJECT : "Meta-all", DAYS : "3 days", ENTERPRISE : "MEAT-ALL" },
+	{ LINK : "https://theilion.io/", PROJECT : "Ilion", DAYS : "4 days", ENTERPRISE : "MEAT-ALL" },
+	{ LINK : "https://rawsoft.io/", PROJECT : "Pamarscan", DAYS : "3 days", ENTERPRISE : "MEAT-ALL" },
+	{ LINK : "https://goldenclub.io/", PROJECT : "Goldenclub", DAYS : "3 days", ENTERPRISE : "MEAT-ALL" },
+	{ LINK : "https://thepierrotclub.io/", PROJECT : "PIERROT CLUB", DAYS : "4 days", ENTERPRISE : "MEAT-ALL" },
+	{ LINK : "http://nicecharger.co.kr/index.jsp", PROJECT : "Nice Charger", DAYS : "6 days", ENTERPRISE : "NINEONE LABS" },
+	{ LINK : "http://sample.nineonelabs.co.kr/paycam/", PROJECT : "PayCam", DAYS : "6 days", ENTERPRISE : "NINEONE LABS" },
+	{ LINK : "http://iipa.kr/index.php", PROJECT : "IIPA", DAYS : "6 days", ENTERPRISE : "NINEONE LABS" },
+	{ LINK : "http://emlab.gachon.ac.kr/", PROJECT : "Gachon Univ Emlab", DAYS : "6 days", ENTERPRISE : "NINEONE LABS" },
+	{ LINK : "http://jbbplatform.jbbank.co.kr/", PROJECT : "JB Platform", DAYS : "6 days", ENTERPRISE : "NINEONE LABS" },
 
-		{ LINK : "https://nft.rootonix.kr/", PROJECT : "Rootonix", DAYS : "4 days", ENTERPRISE : "MEAT-ALL" },
-		{ LINK : "https://lost-ari.com/", PROJECT : "Lost Ari", DAYS : "4 days", ENTERPRISE : "MEAT-ALL" },
-		{ LINK : "https://moorrfamily.com/", PROJECT : "Moorr family", DAYS : "4 days", ENTERPRISE : "MEAT-ALL" },
-		{ LINK : "https://buy.moorrfamily.com/", PROJECT : "Moorr family Minting", DAYS : "2 days", ENTERPRISE : "MEAT-ALL" },
-		{ LINK : "https://dreameta.net/", PROJECT : "Dream Pictures", DAYS : "3 days", ENTERPRISE : "MEAT-ALL" },
-		{ LINK : "https://meta-all.co.kr/", PROJECT : "Meta-all", DAYS : "3 days", ENTERPRISE : "MEAT-ALL" },
-		{ LINK : "https://theilion.io/", PROJECT : "Ilion", DAYS : "4 days", ENTERPRISE : "MEAT-ALL" },
-		{ LINK : "https://rawsoft.io/", PROJECT : "Pamarscan", DAYS : "3 days", ENTERPRISE : "MEAT-ALL" },
-		{ LINK : "https://goldenclub.io/", PROJECT : "Goldenclub", DAYS : "3 days", ENTERPRISE : "MEAT-ALL" },
-		{ LINK : "https://thepierrotclub.io/", PROJECT : "PIERROT CLUB", DAYS : "4 days", ENTERPRISE : "MEAT-ALL" },
-		{ LINK : "http://nicecharger.co.kr/index.jsp", PROJECT : "Nice Charger", DAYS : "6 days", ENTERPRISE : "NINEONE LABS" },
-		{ LINK : "http://sample.nineonelabs.co.kr/paycam/", PROJECT : "PayCam", DAYS : "6 days", ENTERPRISE : "NINEONE LABS" },
-		{ LINK : "http://iipa.kr/index.php", PROJECT : "IIPA", DAYS : "6 days", ENTERPRISE : "NINEONE LABS" },
-		{ LINK : "http://emlab.gachon.ac.kr/", PROJECT : "Gachon Univ Emlab", DAYS : "6 days", ENTERPRISE : "NINEONE LABS" },
-		{ LINK : "http://jbbplatform.jbbank.co.kr/", PROJECT : "JB Platform", DAYS : "6 days", ENTERPRISE : "NINEONE LABS" },
+	]
 
-		]
+	var worklist = $('.work_list');
 
-		var worklist = $('.work_list');
+	for (var key in work) {
+		worklist.append(`<li>
+			<a href=${work[key].LINK} target="_blank">
+			<span>${work[key].PROJECT}</span>
+			<span>${work[key].DAYS}</span>
+			<strong>${work[key].ENTERPRISE}</strong>
+			<span class="icon-link"></span>
+			</a>
+			</li>`)
+	}
 
-		for (var key in work) {
-			worklist.append(`<li>
-				<a href=${work[key].LINK} target="_blank">
-				<span>${work[key].PROJECT}</span>
-				<span>${work[key].DAYS}</span>
-				<strong>${work[key].ENTERPRISE}</strong>
-				<span class="icon-link"></span>
-				</a>
-				</li>`)
-		}
+	// section change
 
-		// section change
+	var pageZindex = 1;
 
-		var pageZindex = 1;
+	const sectionChangeBtn = document.querySelectorAll('.section_change');
+	const sectionCommon = document.querySelectorAll('.section_common');
+	const sideChangeBtn = document.querySelectorAll('.side_menu_btn');
 
-		const sectionChangeBtn = $('.section_change');
-		const sectionCommon = $('.section_common');
-		const sideChangeBtn = $('.side_menu_btn');
+	var sideMenu = document.querySelector('.sidemenu');
 
-		function secChange (index) {
+	sectionChangeBtn.forEach(function(items, i){
 
-			sideChangeBtn.removeClass('main_color');
-			sectionChangeBtn.removeClass('main_color');
+		items.addEventListener("click", function(e){
 
-			sideChangeBtn.eq(index).addClass('main_color');			
-			sectionChangeBtn.eq(index).addClass('main_color');
+			var nodes = [...sectionChangeBtn];
+			var index = nodes.indexOf(e.target);
 
-			sectionCommon.eq(index).css('z-index', pageZindex);
-			sectionCommon.removeClass('section_active');
-			sectionCommon.eq(index).addClass('section_active');
+			pageChange(items, index);
 
-			$('.section_common').animate({scrollTop: 0}, 1000);
-		}
-
-		$.each(sectionChangeBtn, function(index, item){
-
-			$(this).click(function(){
-
-				pageZindex = pageZindex + 1;
-
-				$('.sidemenu').addClass('sidemenu_active');
-
-				secChange(index);
-
-			});
-
-		});
-
-		$.each(sideChangeBtn, function(index, item){
-
-			$(this).click(function(){
-
-				pageZindex = pageZindex + 1;
-
-				$('.sidemenu').addClass('sidemenu_active');
-
-				secChange(index);
-
-			});
-
-		});
-
-		$('.resume_btn').click(function(){
-
-			pageZindex = pageZindex + 1;
-
-			$('.sidemenu').addClass('sidemenu_active');
-
-			sectionCommon.eq(2).css('z-index', pageZindex);
-			sectionCommon.removeClass('section_active');
-			sectionCommon.eq(2).addClass('section_active');
-
-			sideChangeBtn.removeClass('main_color');
-			sectionChangeBtn.removeClass('main_color');
-
-			sideChangeBtn.eq(2).addClass('main_color');			
-			sectionChangeBtn.eq(2).addClass('main_color');
-
-			var resumeTop = $('.career_description').offset().top - 50;
-			console.log(resumeTop);
-
-			$('.section_common').animate({scrollTop: resumeTop}, 1000);
-
-		});
-
-		$('.nav_none').click(function(){
-
-			$('.sidemenu').removeClass('sidemenu_active');
-
-		});
-
-		// scroll event
-
-		function scrollEvent () {
-
-			var scrollY = sectionCommon.scrollTop() + sectionCommon.height();
-			var workList = $('.work_list>li');
-			var resumeList = $('.resume_list>li');
-
-			$.each(workList, function(index, itme){
-
-				var workListTop = $(this).offset().top;
-
-				if (scrollY > workListTop) {
-
-					workList.eq(index).addClass('scroll_acitve');
-
-				} else {
-
-					workList.eq(index).removeClass('scroll_acitve');				
-
-				}
-
-			});
-
-			$.each(resumeList, function(index, itme){
-
-				var resumeListTop = $(this).offset().top;
-
-				if (scrollY > resumeListTop) {
-
-					resumeList.eq(index).addClass('scroll_acitve');
-
-				} else {
-
-					resumeList.eq(index).removeClass('scroll_acitve');				
-
-				}
-
-			});
-
-		}
-
-		sectionCommon.scroll(function(){
-
-			scrollEvent();
-
-		});
-
-		scrollEvent();
-
-		$('.beReady').on("click", function(){
-			alert("준비 중 입니다.");
-		});
-
+		});			
 
 	});
+
+	sideChangeBtn.forEach(function(items, i){
+
+		pageZindex = pageZindex + 1;
+
+		items.addEventListener("click", function(e){
+
+			var nodes = [...sideChangeBtn];
+			var index = nodes.indexOf(e.target);
+
+			pageChange(items, index);
+
+		});			
+
+	});
+
+	function pageChange (items, index) {
+
+		for (var i = 0; i < sectionChangeBtn.length; i++) {
+			sectionChangeBtn[i].classList.remove('main_color');			
+		}
+
+		for (var i = 0; i < sideChangeBtn.length; i++) {
+			sideChangeBtn[i].classList.remove('main_color');
+		}
+
+		sectionCommon[index].style.zIndex = pageZindex;
+
+		sectionChangeBtn[index].classList.add('main_color');
+		sideChangeBtn[index].classList.add('main_color');
+		pageZindex = pageZindex + 1;
+
+		for (var i = 0; i < sectionCommon.length; i++) {
+			sectionCommon[i].classList.remove('section_active');
+		}
+
+		sectionCommon[index].classList.add('section_active');
+
+		if(index == 0) {
+			sideMenu.classList.remove('sidemenu_active');
+		} else {
+			sideMenu.classList.add('sidemenu_active');			
+		}
+
+		document.getElementById('scrollTop').animate({scrollTop: 0}, 1000);
+
+	}
+
+	document.getElementById('resume_btn').addEventListener("click", function(){
+
+		sideMenu.classList.add('sidemenu_active');
+
+		pageZindex = pageZindex + 1;
+		sectionCommon[2].style.zIndex = pageZindex;
+
+		for (var i = 0; i < sectionCommon.length; i++) {
+			sectionCommon[i].classList.remove('section_active');
+		}
+
+		for (var i = 0; i < sideChangeBtn.length; i++) {
+			sideChangeBtn[i].classList.remove('main_color');
+		}
+
+		for (var i = 0; i < sectionChangeBtn.length; i++) {
+			sectionChangeBtn[i].classList.remove('main_color');
+		}
+
+		sectionCommon[2].classList.add('section_active');
+		sideChangeBtn[2].classList.add('main_color');			
+		sectionChangeBtn[2].classList.add('main_color');
+
+		var resumeTop = document.getElementById('career_description').offsetTop - 50;
+		document.getElementById('scrollTop').animate({scrollTop: resumeTop}, 1000);
+
+	});
+
+	function scrollEvent (e, i) {
+		
+		var secScroll = e.scrollTop + e.clientHeight - 400;
+		var workList = document.querySelectorAll('.work_list>li');
+
+		workList.forEach(function(w, i) {
+
+			var workListTop = workList[i].getBoundingClientRect().top;
+
+			if(secScroll > workListTop) {
+				workList[i].classList.add('scroll_active');
+			} else {
+				workList[i].classList.remove('scroll_active');					
+			}
+
+		});
+
+		var secScroll = e.scrollTop + e.clientHeight - 1000;
+		var resumeList = document.querySelectorAll('.resume_list>li');
+
+		resumeList.forEach(function(r, i) {
+
+			var resumeListTop = resumeList[i].getBoundingClientRect().top;
+
+			if(secScroll > resumeListTop) {
+				resumeList[i].classList.add('scroll_active');
+			} else {
+				resumeList[i].classList.remove('scroll_active');					
+			}
+
+		});
+	}
+
+	sectionCommon.forEach(function(e, i){
+
+		e.addEventListener('scroll', function(){
+
+			scrollEvent(e, i);
+
+		});
+
+		scrollEvent(e, i);
+
+	});
+
+	$('.beReady').on("click", function(){
+
+		alert("준비 중 입니다.");
+
+	});
+
+});
