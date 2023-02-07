@@ -25,7 +25,7 @@ window.addEventListener('DOMContentLoaded', function(){
 	var worklist = $('.work_list');
 
 	for (var key in work) {
-		worklist.append(`<li>
+		worklist.append(`<li>	
 			<a href=${work[key].LINK} target="_blank">
 			<span>${work[key].PROJECT}</span>
 			<span>${work[key].DAYS}</span>
